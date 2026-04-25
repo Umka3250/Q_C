@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quadro Center — Залізнична логістика нового покоління</title>
+<meta name="description" content="Залізничні перевезення Україна ⇄ ЄС ⇄ СНД. Фіксовані ставки, власний парк, повний документообіг. 17 років на ринку.">
+<link rel="alternate" hreflang="uk" href="/uk/">
+<link rel="alternate" hreflang="ru" href="/ru/">
+<link rel="alternate" hreflang="en" href="/en/">
+<link rel="alternate" hreflang="x-default" href="/uk/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link" data-i18n="skip">Перейти до основного змісту</a>
+
+<!-- ═══ HEADER ═══ -->
+<header class="site-header" id="hdr">
+  <div class="header-inner">
+
+    <a href="#hero" class="logo" aria-label="Quadro Center">
+      <!-- Dark theme: white logo -->
+      <img src="logo.png" alt="Quadro Center" class="logo-img logo-img-dark">
+      <!-- Light theme: dark logo -->
+      <img src="logo_bleck.svg" alt="Quadro Center" class="logo-img logo-img-light">
+    </a>
+
+    <nav class="nav-links" aria-label="Навігація">
+      <a href="#services" data-i18n="nav.services">Послуги</a>
+      <a href="#routes" data-i18n="nav.routes">Маршрути</a>
+      <a href="#contact" data-i18n="nav.contacts">Контакти</a>
+    </nav>
+
+    <div class="header-right">
+      <div class="lang-sw" aria-label="Мова">
+        <button class="on" data-lang="uk" onclick="setLang('uk')">UK</button>
+        <span aria-hidden="true">·</span>
+        <button data-lang="ru" onclick="setLang('ru')">RU</button>
+        <span aria-hidden="true">·</span>
+        <button data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="theme-toggle" id="theme-btn" aria-label="Перемкнути тему" title="Світла / темна тема"></button>
+      <button class="btn-sm" onclick="openModal()" data-i18n="nav.calc">Розрахувати</button>
+    </div>
+
+    <button class="hamburger" id="ham" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav -->
+<div class="nav-overlay" id="nav-ov" role="dialog" aria-modal="true" aria-label="Меню">
+  <button class="overlay-close" id="ov-close" aria-label="Закрити">✕</button>
+  <a href="#services" onclick="closeNav()" data-i18n="nav.services">Послуги</a>
+  <a href="#routes" onclick="closeNav()" data-i18n="nav.routes">Маршрути</a>
+  <a href="#contact" onclick="closeNav()" data-i18n="nav.contacts">Контакти</a>
+  <div class="overlay-foot">
+    <button class="btn btn-primary" onclick="openModal();closeNav()" data-i18n="hero.btn1">Розрахувати перевезення</button>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero" aria-labelledby="hero-h1">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-vignette" aria-hidden="true"></div>
+  <div class="hero-bottom-grad" aria-hidden="true"></div>
+
+  <div class="container hero-content">
+    <p class="hero-eyebrow reveal" data-i18n="hero.eyebrow">Залізнична логістика · Quadro Center</p>
+    <h1 id="hero-h1" class="display hero-headline">
+      <span class="line"><span class="word w1" data-i18n="hero.w1">Залізниця.</span></span>
+      <span class="line"><span class="word w2 accent-word" data-i18n="hero.w2">Будь-який</span></span>
+      <span class="line"><span class="word w3" data-i18n="hero.w3">кордон.</span></span>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-lead reveal d1" data-i18n="hero.lead">
+        Вантажні перевезення Україна ⇄ ЄС ⇄ СНД. Фіксовані ставки незалежно від часу доставки. Власний парк. Повний документообіг.
+      </p>
+      <div class="hero-actions reveal d2">
+        <button class="btn btn-primary" onclick="openModal()" data-i18n="hero.btn1">Розрахувати перевезення</button>
+        <a href="#contact" class="btn btn-outline" data-i18n="hero.btn2">Зв'язатись з нами</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="metrics-bar" role="region" aria-label="Ключові показники">
+    <div class="metric">
+      <span class="metric-val mono" data-count="17" data-suffix="">0</span>
+      <span class="metric-lbl" data-i18n="metrics.years">Років на ринку</span>
+    </div>
+    <div class="metric">
+      <span class="metric-val mono" data-count="4200" data-suffix="+">0</span>
+      <span class="metric-lbl" data-i18n="metrics.trips">Вагоно-рейсів / рік</span>
+    </div>
+    <div class="metric">
+      <span class="metric-val mono" data-count="18" data-suffix="">0</span>
+      <span class="metric-lbl" data-i18n="metrics.countries">Країн операцій</span>
+    </div>
+    <div class="metric">
+      <span class="metric-val mono" data-count="2.1" data-suffix=" млн т">0</span>
+      <span class="metric-lbl" data-i18n="metrics.cargo">Вантажу на рік</span>
+    </div>
+    <div class="metric">
+      <span class="metric-val mono" data-count="99.1" data-suffix="%">0%</span>
+      <span class="metric-lbl" data-i18n="metrics.ontime">Вчасна доставка</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services" id="services" aria-labelledby="svc-h2">
+  <div class="container">
+    <div class="section-label reveal" data-i18n="svc.label">Напрямки</div>
+    <h2 id="svc-h2" class="display reveal" style="font-size:clamp(2rem,4vw,3.5rem);max-width:20ch;" data-i18n="svc.h2">
+      Повний цикл залізничної логістики
+    </h2>
+    <div class="services-grid">
+
+      <article class="svc-card reveal">
+        <div class="svc-card-glow" aria-hidden="true"></div>
+        <div class="svc-num mono" data-i18n="svc1.num">01 — ДОСТАВКА</div>
+        <svg class="svc-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="4" y="16" width="28" height="12" rx="1"/>
+          <circle cx="10" cy="31" r="3"/><circle cx="26" cy="31" r="3"/>
+          <path d="M4 20h-2M32 16l4 4v8h-4M16 16V10h8l4 6"/>
+        </svg>
+        <h3 class="svc-title" data-i18n="svc1.title">Вантажні перевезення</h3>
+        <p class="svc-desc" data-i18n="svc1.desc">Організація перевезень у всіх типах вагонів по Україні та міжнародних напрямках. Фіксовані ставки незалежно від тривалості.</p>
+        <ul class="svc-list" aria-label="Що входить" data-i18n-html="svc1.list">
+          <li>Піввагони, криті, цистерни, платформи</li>
+          <li>Негабаритні вантажі на транспортерах</li>
+          <li>Маршрути UA → ЄС, Балтика, Середня Азія</li>
+          <li>Організація навантаження та відправлення</li>
+        </ul>
+        <a href="#contact" class="svc-link mono" data-i18n="svc.link">Дізнатись більше →</a>
+      </article>
+
+      <article class="svc-card reveal d1">
+        <div class="svc-card-glow" aria-hidden="true"></div>
+        <div class="svc-num mono" data-i18n="svc2.num">02 — ТРАНЗИТ</div>
+        <svg class="svc-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M6 20h28M26 14l8 6-8 6"/>
+          <circle cx="12" cy="20" r="3"/><circle cx="28" cy="20" r="3"/>
+          <path d="M12 10v4M12 26v4M28 10v4M28 26v4"/>
+        </svg>
+        <h3 class="svc-title" data-i18n="svc2.title">Транзитний супровід</h3>
+        <p class="svc-desc" data-i18n="svc2.desc">Повне ведення транзитних перевезень: від отримання транзитного коду до закриття документообігу на кожному кордоні.</p>
+        <ul class="svc-list" aria-label="Що входить" data-i18n-html="svc2.list">
+          <li>Отримання транзитного коду</li>
+          <li>Документи ЦИМ/СМГС, TIR, CMR</li>
+          <li>Митний супровід на кожному переході</li>
+          <li>Узгодження маршруту з залізницями</li>
+        </ul>
+        <a href="#contact" class="svc-link mono" data-i18n="svc.link">Дізнатись більше →</a>
+      </article>
+
+      <article class="svc-card reveal d2">
+        <div class="svc-card-glow" aria-hidden="true"></div>
+        <div class="svc-num mono" data-i18n="svc3.num">03 — РЕМОНТ</div>
+        <svg class="svc-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M20 8v4M20 28v4M8 20h4M28 20h4"/>
+          <circle cx="20" cy="20" r="6"/>
+          <path d="M12 12l3 3M25 25l3 3M12 28l3-3M25 15l3-3"/>
+          <circle cx="20" cy="20" r="12" stroke-dasharray="3 3" opacity="0.4"/>
+        </svg>
+        <h3 class="svc-title" data-i18n="svc3.title">Ремонт вагонів</h3>
+        <p class="svc-desc" data-i18n="svc3.desc">Поточний відцепний, деповський та капітальний ремонт. Реєстрація в АБД ПВ, ТО по пробігу, постачання запчастин.</p>
+        <ul class="svc-list" aria-label="Що входить" data-i18n-html="svc3.list">
+          <li>Поточний, деповський, капітальний</li>
+          <li>Технічне обслуговування по пробігу</li>
+          <li>Реєстрація та ведення в АБД ПВ</li>
+          <li>Постачання запасних частин</li>
+        </ul>
+        <a href="#contact" class="svc-link mono" data-i18n="svc.link">Дізнатись більше →</a>
+      </article>
+
+      <article class="svc-card reveal d3">
+        <div class="svc-card-glow" aria-hidden="true"></div>
+        <div class="svc-num mono" data-i18n="svc4.num">04 — УПРАВЛІННЯ</div>
+        <svg class="svc-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="6" y="6" width="12" height="12" rx="1"/><rect x="22" y="6" width="12" height="12" rx="1"/>
+          <rect x="6" y="22" width="12" height="12" rx="1"/><rect x="22" y="22" width="12" height="12" rx="1"/>
+          <path d="M18 12h4M12 18v4M28 18v4M18 28h4" opacity="0.5"/>
+        </svg>
+        <h3 class="svc-title" data-i18n="svc4.title">Управління рухомим складом</h3>
+        <p class="svc-desc" data-i18n="svc4.desc">Повне управління парком вагонів замовника: планування рейсів, контроль стану, оптимізація порожніх пробігів.</p>
+        <ul class="svc-list" aria-label="Що входить" data-i18n-html="svc4.list">
+          <li>Оперативне диспетчерське управління</li>
+          <li>Моніторинг дислокації парку</li>
+          <li>Оптимізація завантаженості маршрутів</li>
+          <li>Звітність і аналітика для замовника</li>
+        </ul>
+        <a href="#contact" class="svc-link mono" data-i18n="svc.link">Дізнатись більше →</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<section class="stats-section" aria-labelledby="stats-h2">
+  <div class="container">
+    <div class="section-label reveal" data-i18n="stats.label">Цифри</div>
+    <h2 id="stats-h2" class="display reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);max-width:24ch;margin-bottom:0;" data-i18n="stats.h2">
+      Лояльність до клієнтів — наша конкурентна перевага
+    </h2>
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num mono">
+          <span data-stat="17">17</span><span class="stat-suffix">+</span>
+        </div>
+        <p class="stat-label" data-i18n="stats.s1">Років на ринку залізничних перевезень</p>
+        <div class="stat-bar"></div>
+      </div>
+      <div class="stat-item reveal d1">
+        <div class="stat-num mono">
+          <span data-stat="4200">4 200</span><span class="stat-suffix">+</span>
+        </div>
+        <p class="stat-label" data-i18n="stats.s2">Вагоно-рейсів щороку</p>
+        <div class="stat-bar"></div>
+      </div>
+      <div class="stat-item reveal d2">
+        <div class="stat-num mono">
+          <span data-stat="98">98</span><span class="stat-suffix">%</span>
+        </div>
+        <p class="stat-label" data-i18n="stats.s3">Клієнтів повертаються на наступний рік</p>
+        <div class="stat-bar"></div>
+      </div>
+      <div class="stat-item reveal d3">
+        <div class="stat-num mono">
+          <span data-stat="2">2</span><span class="stat-suffix" data-i18n="stats.s4.sfx">год</span>
+        </div>
+        <p class="stat-label" data-i18n="stats.s4">Максимальний час відповіді на запит</p>
+        <div class="stat-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ROUTE MAP ═══ -->
+<section class="route-section" id="routes" aria-labelledby="route-h2">
+  <div class="container">
+    <div class="section-label reveal" data-i18n="routes.label">Маршрути</div>
+    <h2 id="route-h2" class="display reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);max-width:22ch;" data-i18n="routes.h2">
+      Мережа перевезень
+    </h2>
+    <div class="route-wrap reveal">
+      <div class="route-svg-wrap">
+        <svg id="route-svg" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="route-svg-title">
+          <title id="route-svg-title">Карта маршрутів Quadro Center — Україна</title>
+          <defs>
+            <pattern id="grid-pat" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
+            </pattern>
+          </defs>
+          <rect width="900" height="420" fill="url(#grid-pat)" color="var(--text-mute)"/>
+
+          <!-- Main routes -->
+          <path id="r1" class="route-line" d="M 455 148 Q 400 152 365 158 Q 310 163 255 158 Q 210 153 165 170"/>
+          <path id="r2" class="route-line" d="M 455 148 Q 500 158 545 178 Q 590 196 648 155"/>
+          <path id="r3" class="route-line" d="M 455 148 Q 430 175 390 200 Q 345 222 320 215 Q 300 210 285 218 Q 270 226 265 245 Q 255 270 270 300 Q 282 322 300 340"/>
+          <path id="r4" class="route-line" d="M 455 148 Q 478 178 505 200 Q 528 218 548 238"/>
+          <path id="r5" class="route-line route-line-2" d="M 455 148 Q 458 128 462 108"/>
+          <path id="r6" class="route-line route-line-2" d="M 165 170 Q 168 198 172 218 Q 176 235 185 252"/>
+          <path id="r7" class="route-line route-line-2" d="M 648 155 Q 635 185 615 210 Q 598 228 548 238"/>
+          <path id="r8" class="route-line route-line-2" d="M 548 238 Q 558 262 572 285"/>
+          <path id="r9" class="route-line route-line-2" d="M 300 340 Q 338 338 368 340 Q 400 342 430 340 Q 462 337 490 342"/>
+          <path id="r10" class="route-line route-line-2" d="M 572 285 Q 595 302 618 318"/>
+
+          <!-- KYIV hub -->
+          <circle class="route-dot-hub" cx="455" cy="148" r="7"/>
+          <circle cx="455" cy="148" r="14" fill="none" stroke-width="0.8" opacity="0.3" class="pulse-ring"/>
+          <text class="route-city" x="467" y="145">КИЇВ</text>
+
+          <!-- City dots -->
+          <circle class="route-dot" cx="165" cy="170" r="5"/>
+          <text class="route-city" x="118" y="167">ЛЬВІВ</text>
+          <circle class="route-dot" cx="648" cy="155" r="5"/>
+          <text class="route-city" x="656" y="152">ХАРКІВ</text>
+          <circle class="route-dot" cx="300" cy="340" r="5"/>
+          <text class="route-city" x="256" y="352">ОДЕСА</text>
+          <circle class="route-dot" cx="548" cy="238" r="5"/>
+          <text class="route-city" x="556" y="235">ДНІПРО</text>
+          <circle class="route-dot" cx="572" cy="285" r="4"/>
+          <text class="route-city" x="578" y="282">ЗАПОРІЖЖЯ</text>
+          <circle class="route-dot" cx="320" cy="215" r="3"/>
+          <text class="route-city" x="292" y="208">ВІННИЦЯ</text>
+          <circle class="route-dot" cx="430" cy="340" r="3"/>
+          <text class="route-city" x="436" y="337">МИКОЛАЇВ</text>
+          <circle class="route-dot" cx="490" cy="342" r="3"/>
+          <text class="route-city" x="496" y="353">ХЕРСОН</text>
+          <circle class="route-dot" cx="365" cy="158" r="3"/>
+          <text class="route-city" x="338" y="150">ЖИТОМИР</text>
+          <circle class="route-dot" cx="255" cy="158" r="3"/>
+          <text class="route-city" x="228" y="150">РІВНЕ</text>
+          <circle class="route-dot" cx="462" cy="108" r="3"/>
+          <text class="route-city" x="468" y="105">ЧЕРНІГІВ</text>
+          <circle class="route-dot" cx="172" cy="218" r="3"/>
+          <text class="route-city" x="110" y="215">ІВ.-ФРАНКІВСЬК</text>
+          <circle class="route-dot" cx="185" cy="252" r="3"/>
+          <text class="route-city" x="140" y="264">ЧЕРНІВЦІ</text>
+          <circle class="route-dot" cx="618" cy="318" r="3"/>
+          <text class="route-city" x="624" y="315">МЕЛІТОПОЛЬ</text>
+          <circle class="route-dot" cx="556" cy="192" r="3"/>
+          <text class="route-city" x="562" y="189">ПОЛТАВА</text>
+
+          <!-- Legend -->
+          <line x1="30" y1="398" x2="70" y2="398" class="route-legend-main" stroke-width="1.5"/>
+          <text class="route-city" x="78" y="401" opacity="0.6" data-i18n="routes.leg1">Основні маршрути</text>
+          <line x1="220" y1="398" x2="260" y2="398" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+          <text class="route-city" x="268" y="401" opacity="0.5" data-i18n="routes.leg2">Регіональні напрямки</text>
+        </svg>
+      </div>
+      <div class="route-corridors">
+        <div class="corridor-tag"><span class="corridor-dot"></span> <span data-i18n="routes.c1">Київ → Львів</span></div>
+        <div class="corridor-tag"><span class="corridor-dot"></span> <span data-i18n="routes.c2">Київ → Харків</span></div>
+        <div class="corridor-tag"><span class="corridor-dot"></span> <span data-i18n="routes.c3">Київ → Одеса</span></div>
+        <div class="corridor-tag"><span class="corridor-dot"></span> <span data-i18n="routes.c4">Київ → Дніпро</span></div>
+        <div class="corridor-tag"><span class="corridor-dot"></span> <span data-i18n="routes.c5">Дніпро → Запоріжжя</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="process-section" aria-labelledby="proc-h2">
+  <div class="container">
+    <div class="section-label reveal" data-i18n="proc.label">Процес</div>
+    <h2 id="proc-h2" class="display reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);max-width:22ch;margin-bottom:0;" data-i18n="proc.h2">
+      Як ми працюємо
+    </h2>
+    <div class="process-steps" role="list">
+      <div class="process-step reveal" role="listitem">
+        <div class="ps-num mono">01</div>
+        <div class="ps-body">
+          <h3 class="ps-title"><span data-i18n="proc.1.title">Запит</span> <span class="ps-tag" data-i18n="proc.1.tag">/ &lt; 2 год</span></h3>
+          <p class="ps-desc" data-i18n="proc.1.desc">Надсилаєте маршрут, тип і обсяг вантажу. Відповідаємо з попередньою оцінкою протягом двох годин у робочий час.</p>
+        </div>
+      </div>
+      <div class="process-step reveal d1" role="listitem">
+        <div class="ps-num mono">02</div>
+        <div class="ps-body">
+          <h3 class="ps-title"><span data-i18n="proc.2.title">Розрахунок</span> <span class="ps-tag" data-i18n="proc.2.tag">/ фіксована ставка</span></h3>
+          <p class="ps-desc" data-i18n="proc.2.desc">Надаємо комерційну пропозицію з фіксованою ставкою. Ціна не змінюється незалежно від часу доставки — жодних сюрпризів.</p>
+        </div>
+      </div>
+      <div class="process-step reveal d2" role="listitem">
+        <div class="ps-num mono">03</div>
+        <div class="ps-body">
+          <h3 class="ps-title"><span data-i18n="proc.3.title">Договір</span> <span class="ps-tag" data-i18n="proc.3.tag">/ документообіг</span></h3>
+          <p class="ps-desc" data-i18n="proc.3.desc">Підписання договору, узгодження умов страхування, підготовка перевізних та митних документів.</p>
+        </div>
+      </div>
+      <div class="process-step reveal d3" role="listitem">
+        <div class="ps-num mono">04</div>
+        <div class="ps-body">
+          <h3 class="ps-title"><span data-i18n="proc.4.title">Відправлення</span> <span class="ps-tag" data-i18n="proc.4.tag">/ контроль</span></h3>
+          <p class="ps-desc" data-i18n="proc.4.desc">Організація навантаження, оформлення накладних, відправлення вагону з відстеженням дислокації в режимі реального часу.</p>
+        </div>
+      </div>
+      <div class="process-step reveal d4" role="listitem">
+        <div class="ps-num mono">05</div>
+        <div class="ps-body">
+          <h3 class="ps-title"><span data-i18n="proc.5.title">Доставка та звітність</span> <span class="ps-tag" data-i18n="proc.5.tag">/ 99.1% вчасно</span></h3>
+          <p class="ps-desc" data-i18n="proc.5.desc">Підтвердження доставки, закриття документів, повний звіт замовнику. Менеджер доступний на кожному етапі.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND ═══ -->
+<section class="cta-band" aria-labelledby="cta-h2">
+  <div class="container">
+    <h2 id="cta-h2" class="display cta-headline reveal" data-i18n="cta.h2">
+      Готові прорахувати маршрут?
+    </h2>
+    <a href="mailto:office@q-centre.com.ua" class="cta-email reveal d1">
+      office@q-centre.com.ua
+    </a>
+    <div class="cta-phones reveal d2">
+      <a href="tel:+380443644226" class="cta-phone mono">+38 (044) 364-42-26</a>
+      <a href="tel:+380675078499" class="cta-phone mono">+38 (067) 507-84-99 — <span data-i18n="cta.anatoliy">Анатолій</span></a>
+    </div>
+    <div style="margin-top:36px;" class="reveal d3">
+      <button class="btn btn-primary" onclick="openModal()" data-i18n="cta.btn">Надіслати запит на розрахунок</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="contact-section" id="contact" aria-labelledby="cont-h2">
+  <div class="container">
+    <div class="section-label reveal" data-i18n="contact.label">Контакти</div>
+    <h2 id="cont-h2" class="display reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);max-width:22ch;margin-bottom:0;" data-i18n="contact.h2">
+      Зв'яжіться з нами
+    </h2>
+    <div class="contact-grid">
+      <!-- FORM -->
+      <!-- Form submissions via formsubmit.co — no registration required -->
+      <form class="contact-form reveal" id="contact-form" onsubmit="handleContact(event)" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="cf-name" data-i18n="contact.f.name">Ім'я</label>
+            <input type="text" id="cf-name" name="name" data-i18n-ph="contact.f.name.ph" placeholder="Іван Петренко" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="cf-company" data-i18n="contact.f.company">Компанія</label>
+            <input type="text" id="cf-company" name="company" data-i18n-ph="contact.f.company.ph" placeholder="ТОВ «Компанія»" autocomplete="organization">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="cf-phone" data-i18n="contact.f.phone">Телефон</label>
+            <input type="tel" id="cf-phone" name="phone" placeholder="+380..." autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="name@company.ua" required autocomplete="email">
+          </div>
+        </div>
+        <div class="field">
+          <label for="cf-msg" data-i18n="contact.f.msg">Повідомлення</label>
+          <textarea id="cf-msg" name="message" data-i18n-ph="contact.f.msg.ph" placeholder="Маршрут, тип і обсяг вантажу, будь-яке запитання..."></textarea>
+        </div>
+        <!-- honeypot for spam -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="form-success" id="contact-success" data-i18n="contact.success">
+          Повідомлення прийнято. Відповімо протягом 2 годин у робочий час.
+        </div>
+        <div class="form-error" id="contact-error" data-i18n="contact.error">
+          Помилка надсилання. Будь ласка, напишіть нам на office@q-centre.com.ua
+        </div>
+        <button type="submit" class="btn btn-primary" id="contact-submit" style="width:100%;justify-content:center;" data-i18n="contact.submit">
+          Надіслати повідомлення
+        </button>
+      </form>
+
+      <!-- CONTACT DETAILS -->
+      <div class="contact-details reveal d2">
+        <div class="detail-block">
+          <h4 data-i18n="contact.d.phones">Телефони</h4>
+          <a href="tel:+380443644226" class="big-link">+38 (044) 364-42-26</a>
+          <a href="tel:+380675078499" style="margin-top:8px;">+38 (067) 507-84-99 — <span data-i18n="cta.anatoliy">Анатолій</span></a>
+        </div>
+        <div class="detail-block">
+          <h4>Email</h4>
+          <a href="mailto:office@q-centre.com.ua" class="big-link">office@q-centre.com.ua</a>
+        </div>
+        <div class="detail-block">
+          <h4 data-i18n="contact.d.address">Адреса</h4>
+          <address style="font-size:14px;color:var(--text-2);font-style:normal;line-height:1.7;">
+            <span data-i18n="contact.d.street">вул. Василя Тютюнника, 37/1, оф. 17</span><br>
+            <span data-i18n="contact.d.city">Київ, 03150, Україна</span>
+          </address>
+        </div>
+        <div class="detail-block">
+          <h4 data-i18n="contact.d.hours">Години роботи</h4>
+          <p data-i18n="contact.d.h1">Пн–Пт: 09:00 – 18:00</p>
+          <p data-i18n="contact.d.h2">Сб–Нд: за попередньою домовленістю</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="contact-map reveal">
+      <iframe
+        title="Quadro Center на карті"
+        src="https://maps.google.com/maps?q=%D0%B2%D1%83%D0%BB.+%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8F+%D0%A2%D1%8E%D1%82%D1%8E%D0%BD%D0%BD%D0%B8%D0%BA%D0%B0%2C+37%2F1%2C+%D0%9A%D0%B8%D1%97%D0%B2%2C+03150&hl=uk&z=16&output=embed"
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        sandbox="allow-scripts allow-same-origin allow-popups">
+      </iframe>
+      <div class="map-label">
+        <span data-i18n="contact.d.street">вул. Василя Тютюнника, 37/1, оф. 17</span> · <span data-i18n="contact.d.city">Київ, 03150, Україна</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h3 data-i18n="footer.nav">Навігація</h3>
+        <a href="#services" data-i18n="nav.services">Послуги</a>
+        <a href="#routes" data-i18n="nav.routes">Маршрути</a>
+        <a href="#contact" data-i18n="nav.contacts">Контакти</a>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.services">Послуги</h3>
+        <a href="#services" data-i18n="svc1.title">Вантажні перевезення</a>
+        <a href="#services" data-i18n="svc2.title">Транзитний супровід</a>
+        <a href="#services" data-i18n="svc3.title">Ремонт вагонів</a>
+        <a href="#services" data-i18n="svc4.title">Управління парком</a>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="nav.contacts">Контакти</h3>
+        <address><span data-i18n="contact.d.street">вул. Василя Тютюнника, 37/1, оф. 17</span><br><span data-i18n="contact.d.city">Київ, 03150</span></address>
+        <a href="tel:+380443644226">+38 (044) 364-42-26</a>
+        <a href="mailto:office@q-centre.com.ua">office@q-centre.com.ua</a>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.legal">Правове</h3>
+        <a href="#" data-i18n="footer.privacy">Конфіденційність</a>
+        <a href="#" data-i18n="footer.terms">Умови використання</a>
+        <a href="#" data-i18n="footer.sitemap">Карта сайту</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-wm" aria-hidden="true">QUADRO<span>.</span>CENTER</div>
+      <p class="footer-copy mono" data-i18n="footer.copy">© 2008–2026 ТОВ «Квадро Центр» · Київ, Україна</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ MODAL — CALCULATION REQUEST ═══ -->
+<div class="modal-wrap" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-t">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()" aria-label="Закрити">✕</button>
+    <h2 id="modal-t" data-i18n="modal.title">Розрахунок перевезення</h2>
+    <form onsubmit="handleModal(event)" novalidate style="display:flex;flex-direction:column;gap:18px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="field">
+          <label for="m-company" data-i18n="contact.f.company">Компанія</label>
+          <input type="text" id="m-company" name="company" data-i18n-ph="contact.f.company.ph" placeholder="ТОВ «Компанія»" required>
+        </div>
+        <div class="field">
+          <label for="m-cargo" data-i18n="modal.cargo">Тип вантажу</label>
+          <select id="m-cargo" name="cargo_type" required>
+            <option value="" disabled selected data-i18n="modal.choose">Оберіть</option>
+            <option data-i18n="modal.c1">Зерно / агро</option>
+            <option data-i18n="modal.c2">Метал / прокат</option>
+            <option data-i18n="modal.c3">Вугілля / кокс</option>
+            <option data-i18n="modal.c4">Хімічна сировина</option>
+            <option data-i18n="modal.c5">Нафтопродукти</option>
+            <option data-i18n="modal.c6">Контейнери</option>
+            <option data-i18n="modal.c7">Негабарит</option>
+            <option data-i18n="modal.c8">Інше</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="field">
+          <label for="m-vol" data-i18n="modal.vol">Обʼєм, т</label>
+          <input type="number" id="m-vol" name="volume" data-i18n-ph="modal.vol.ph" placeholder="напр. 5 000" min="1">
+        </div>
+        <div class="field">
+          <label for="m-route" data-i18n="modal.route">Маршрут</label>
+          <input type="text" id="m-route" name="route" data-i18n-ph="modal.route.ph" placeholder="напр. Харків → Варшава">
+        </div>
+      </div>
+      <div class="field">
+        <label for="m-contact" data-i18n="modal.contact">Email або телефон</label>
+        <input type="text" id="m-contact" name="contact" data-i18n-ph="modal.contact.ph" placeholder="+380... або email" required>
+      </div>
+      <!-- honeypot -->
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <div id="modal-success" style="display:none;padding:12px 16px;background:var(--accent-dim);border:1px solid var(--accent);color:var(--accent);font-family:var(--font-m);font-size:13px;" data-i18n="modal.success">
+        Запит прийнято. Відповімо протягом 2 годин.
+      </div>
+      <div id="modal-error" style="display:none;padding:12px 16px;background:rgba(208,39,45,0.08);border:1px solid var(--accent);color:var(--accent);font-family:var(--font-m);font-size:13px;" data-i18n="modal.error">
+        Помилка. Напишіть нам на office@q-centre.com.ua
+      </div>
+      <button type="submit" class="btn btn-primary" id="modal-submit" style="width:100%;justify-content:center;" data-i18n="modal.submit">Надіслати запит</button>
+    </form>
+  </div>
+</div>
+
+<script src="particles.js"></script>
+<script>
+/* ════════════════════════════════════════════════════════════
+   i18n — повні переклади UK / RU / EN
+════════════════════════════════════════════════════════════ */
+const I18N = {
+  uk: {
+    'skip': 'Перейти до основного змісту',
+    // Nav
+    'nav.services': 'Послуги',
+    'nav.routes': 'Маршрути',
+    'nav.contacts': 'Контакти',
+    'nav.calc': 'Розрахувати',
+    // Hero
+    'hero.eyebrow': 'Залізнична логістика · Quadro Center',
+    'hero.w1': 'Залізниця.',
+    'hero.w2': 'Будь-який',
+    'hero.w3': 'кордон.',
+    'hero.lead': 'Вантажні перевезення Україна ⇄ ЄС ⇄ СНД. Фіксовані ставки незалежно від часу доставки. Власний парк. Повний документообіг.',
+    'hero.btn1': 'Розрахувати перевезення',
+    'hero.btn2': "Зв'язатись з нами",
+    // Metrics
+    'metrics.years': 'Років на ринку',
+    'metrics.trips': 'Вагоно-рейсів / рік',
+    'metrics.countries': 'Країн операцій',
+    'metrics.cargo': 'Вантажу на рік',
+    'metrics.ontime': 'Вчасна доставка',
+    // Services
+    'svc.label': 'Напрямки',
+    'svc.h2': 'Повний цикл залізничної логістики',
+    'svc.link': 'Дізнатись більше →',
+    'svc1.num': '01 — ДОСТАВКА',
+    'svc1.title': 'Вантажні перевезення',
+    'svc1.desc': 'Організація перевезень у всіх типах вагонів по Україні та міжнародних напрямках. Фіксовані ставки незалежно від тривалості.',
+    'svc1.list': '<li>Піввагони, криті, цистерни, платформи</li><li>Негабаритні вантажі на транспортерах</li><li>Маршрути UA → ЄС, Балтика, Середня Азія</li><li>Організація навантаження та відправлення</li>',
+    'svc2.num': '02 — ТРАНЗИТ',
+    'svc2.title': 'Транзитний супровід',
+    'svc2.desc': 'Повне ведення транзитних перевезень: від отримання транзитного коду до закриття документообігу на кожному кордоні.',
+    'svc2.list': '<li>Отримання транзитного коду</li><li>Документи ЦИМ/СМГС, TIR, CMR</li><li>Митний супровід на кожному переході</li><li>Узгодження маршруту з залізницями</li>',
+    'svc3.num': '03 — РЕМОНТ',
+    'svc3.title': 'Ремонт вагонів',
+    'svc3.desc': 'Поточний відцепний, деповський та капітальний ремонт. Реєстрація в АБД ПВ, ТО по пробігу, постачання запчастин.',
+    'svc3.list': '<li>Поточний, деповський, капітальний</li><li>Технічне обслуговування по пробігу</li><li>Реєстрація та ведення в АБД ПВ</li><li>Постачання запасних частин</li>',
+    'svc4.num': '04 — УПРАВЛІННЯ',
+    'svc4.title': 'Управління рухомим складом',
+    'svc4.desc': 'Повне управління парком вагонів замовника: планування рейсів, контроль стану, оптимізація порожніх пробігів.',
+    'svc4.list': '<li>Оперативне диспетчерське управління</li><li>Моніторинг дислокації парку</li><li>Оптимізація завантаженості маршрутів</li><li>Звітність і аналітика для замовника</li>',
+    // Stats
+    'stats.label': 'Цифри',
+    'stats.h2': 'Лояльність до клієнтів — наша конкурентна перевага',
+    'stats.s1': 'Років на ринку залізничних перевезень',
+    'stats.s2': 'Вагоно-рейсів щороку',
+    'stats.s3': 'Клієнтів повертаються на наступний рік',
+    'stats.s4': 'Максимальний час відповіді на запит',
+    'stats.s4.sfx': 'год',
+    // Routes
+    'routes.label': 'Маршрути',
+    'routes.h2': 'Мережа перевезень',
+    'routes.leg1': 'Основні маршрути',
+    'routes.leg2': 'Регіональні напрямки',
+    'routes.c1': 'Київ → Львів',
+    'routes.c2': 'Київ → Харків',
+    'routes.c3': 'Київ → Одеса',
+    'routes.c4': 'Київ → Дніпро',
+    'routes.c5': 'Дніпро → Запоріжжя',
+    // Process
+    'proc.label': 'Процес',
+    'proc.h2': 'Як ми працюємо',
+    'proc.1.title': 'Запит',
+    'proc.1.tag': '/ < 2 год',
+    'proc.1.desc': 'Надсилаєте маршрут, тип і обсяг вантажу. Відповідаємо з попередньою оцінкою протягом двох годин у робочий час.',
+    'proc.2.title': 'Розрахунок',
+    'proc.2.tag': '/ фіксована ставка',
+    'proc.2.desc': 'Надаємо комерційну пропозицію з фіксованою ставкою. Ціна не змінюється незалежно від часу доставки — жодних сюрпризів.',
+    'proc.3.title': 'Договір',
+    'proc.3.tag': '/ документообіг',
+    'proc.3.desc': 'Підписання договору, узгодження умов страхування, підготовка перевізних та митних документів.',
+    'proc.4.title': 'Відправлення',
+    'proc.4.tag': '/ контроль',
+    'proc.4.desc': 'Організація навантаження, оформлення накладних, відправлення вагону з відстеженням дислокації в режимі реального часу.',
+    'proc.5.title': 'Доставка та звітність',
+    'proc.5.tag': '/ 99.1% вчасно',
+    'proc.5.desc': 'Підтвердження доставки, закриття документів, повний звіт замовнику. Менеджер доступний на кожному етапі.',
+    // Cases
+    // CTA
+    'cta.h2': 'Готові прорахувати маршрут?',
+    'cta.anatoliy': 'Анатолій',
+    'cta.btn': 'Надіслати запит на розрахунок',
+    // Contact
+    'contact.label': 'Контакти',
+    'contact.h2': "Зв'яжіться з нами",
+    'contact.f.name': "Ім'я",
+    'contact.f.name.ph': 'Іван Петренко',
+    'contact.f.company': 'Компанія',
+    'contact.f.company.ph': 'ТОВ «Компанія»',
+    'contact.f.phone': 'Телефон',
+    'contact.f.msg': 'Повідомлення',
+    'contact.f.msg.ph': 'Маршрут, тип і обсяг вантажу, будь-яке запитання...',
+    'contact.success': 'Повідомлення прийнято. Відповімо протягом 2 годин у робочий час.',
+    'contact.error': 'Помилка надсилання. Будь ласка, напишіть нам на office@q-centre.com.ua',
+    'contact.submit': 'Надіслати повідомлення',
+    'contact.d.phones': 'Телефони',
+    'contact.d.address': 'Адреса',
+    'contact.d.street': 'вул. Василя Тютюнника, 37/1, оф. 17',
+    'contact.d.city': 'Київ, 03150, Україна',
+    'contact.d.hours': 'Години роботи',
+    'contact.d.h1': 'Пн–Пт: 09:00 – 18:00',
+    'contact.d.h2': 'Сб–Нд: за попередньою домовленістю',
+    // Footer
+    'footer.nav': 'Навігація',
+    'footer.services': 'Послуги',
+    'footer.legal': 'Правове',
+    'footer.privacy': 'Конфіденційність',
+    'footer.terms': 'Умови використання',
+    'footer.sitemap': 'Карта сайту',
+    'footer.copy': '© 2008–2026 ТОВ «Квадро Центр» · Київ, Україна',
+    // Modal
+    'modal.title': 'Розрахунок перевезення',
+    'modal.cargo': 'Тип вантажу',
+    'modal.choose': 'Оберіть',
+    'modal.c1': 'Зерно / агро', 'modal.c2': 'Метал / прокат', 'modal.c3': 'Вугілля / кокс',
+    'modal.c4': 'Хімічна сировина', 'modal.c5': 'Нафтопродукти', 'modal.c6': 'Контейнери',
+    'modal.c7': 'Негабарит', 'modal.c8': 'Інше',
+    'modal.vol': "Обʼєм, т", 'modal.vol.ph': 'напр. 5 000',
+    'modal.route': 'Маршрут', 'modal.route.ph': 'напр. Харків → Варшава',
+    'modal.contact': 'Email або телефон', 'modal.contact.ph': '+380... або email',
+    'modal.success': 'Запит прийнято. Відповімо протягом 2 годин.',
+    'modal.error': 'Помилка. Напишіть нам на office@q-centre.com.ua',
+    'modal.submit': 'Надіслати запит',
+    // Page title
+    '_title': 'Quadro Center — Залізнична логістика нового покоління',
+  },
+
+  ru: {
+    'skip': 'Перейти к основному содержимому',
+    'nav.services': 'Услуги',
+    'nav.routes': 'Маршруты',
+    'nav.contacts': 'Контакты',
+    'nav.calc': 'Рассчитать',
+    'hero.eyebrow': 'Железнодорожная логистика · Quadro Center',
+    'hero.w1': 'Железная',
+    'hero.w2': 'дорога —',
+    'hero.w3': 'любой рубеж.',
+    'hero.lead': 'Грузовые перевозки Украина ⇄ ЕС ⇄ СНГ. Фиксированные ставки независимо от времени доставки. Собственный парк. Полный документооборот.',
+    'hero.btn1': 'Рассчитать перевозку',
+    'hero.btn2': 'Связаться с нами',
+    'metrics.years': 'Лет на рынке',
+    'metrics.trips': 'Вагонорейсов / год',
+    'metrics.countries': 'Стран операций',
+    'metrics.cargo': 'Груза в год',
+    'metrics.ontime': 'Доставка в срок',
+    'svc.label': 'Направления',
+    'svc.h2': 'Полный цикл железнодорожной логистики',
+    'svc.link': 'Узнать больше →',
+    'svc1.num': '01 — ДОСТАВКА',
+    'svc1.title': 'Грузовые перевозки',
+    'svc1.desc': 'Организация перевозок во всех типах вагонов по Украине и международным направлениям. Фиксированные ставки независимо от длительности.',
+    'svc1.list': '<li>Полувагоны, крытые, цистерны, платформы</li><li>Негабаритные грузы на транспортёрах</li><li>Маршруты UA → ЕС, Балтика, Средняя Азия</li><li>Организация погрузки и отправления</li>',
+    'svc2.num': '02 — ТРАНЗИТ',
+    'svc2.title': 'Транзитное сопровождение',
+    'svc2.desc': 'Полное ведение транзитных перевозок: от получения транзитного кода до закрытия документооборота на каждой границе.',
+    'svc2.list': '<li>Получение транзитного кода</li><li>Документы ЦИМ/СМГС, TIR, CMR</li><li>Таможенное сопровождение на каждом переходе</li><li>Согласование маршрута с железными дорогами</li>',
+    'svc3.num': '03 — РЕМОНТ',
+    'svc3.title': 'Ремонт вагонов',
+    'svc3.desc': 'Текущий отцепочный, деповской и капитальный ремонт. Регистрация в АБД ПВ, ТО по пробегу, поставка запчастей.',
+    'svc3.list': '<li>Текущий, деповской, капитальный</li><li>Техническое обслуживание по пробегу</li><li>Регистрация и ведение в АБД ПВ</li><li>Поставка запасных частей</li>',
+    'svc4.num': '04 — УПРАВЛЕНИЕ',
+    'svc4.title': 'Управление подвижным составом',
+    'svc4.desc': 'Полное управление парком вагонов заказчика: планирование рейсов, контроль состояния, оптимизация порожних пробегов.',
+    'svc4.list': '<li>Оперативное диспетчерское управление</li><li>Мониторинг дислокации парка</li><li>Оптимизация загруженности маршрутов</li><li>Отчётность и аналитика для заказчика</li>',
+    'stats.label': 'Цифры',
+    'stats.h2': 'Лояльность к клиентам — наше конкурентное преимущество',
+    'stats.s1': 'Лет на рынке железнодорожных перевозок',
+    'stats.s2': 'Вагонорейсов ежегодно',
+    'stats.s3': 'Клиентов возвращаются на следующий год',
+    'stats.s4': 'Максимальное время ответа на запрос',
+    'stats.s4.sfx': 'ч',
+    'routes.label': 'Маршруты',
+    'routes.h2': 'Сеть перевозок',
+    'routes.leg1': 'Основные маршруты',
+    'routes.leg2': 'Региональные направления',
+    'routes.c1': 'Киев → Львов',
+    'routes.c2': 'Киев → Харьков',
+    'routes.c3': 'Киев → Одесса',
+    'routes.c4': 'Киев → Днепр',
+    'routes.c5': 'Днепр → Запорожье',
+    'proc.label': 'Процесс',
+    'proc.h2': 'Как мы работаем',
+    'proc.1.title': 'Запрос',
+    'proc.1.tag': '/ < 2 ч',
+    'proc.1.desc': 'Отправляете маршрут, тип и объём груза. Отвечаем с предварительной оценкой в течение двух часов в рабочее время.',
+    'proc.2.title': 'Расчёт',
+    'proc.2.tag': '/ фиксированная ставка',
+    'proc.2.desc': 'Предоставляем коммерческое предложение с фиксированной ставкой. Цена не изменяется независимо от времени доставки — никаких сюрпризов.',
+    'proc.3.title': 'Договор',
+    'proc.3.tag': '/ документооборот',
+    'proc.3.desc': 'Подписание договора, согласование условий страхования, подготовка перевозочных и таможенных документов.',
+    'proc.4.title': 'Отправление',
+    'proc.4.tag': '/ контроль',
+    'proc.4.desc': 'Организация погрузки, оформление накладных, отправление вагона с отслеживанием дислокации в реальном времени.',
+    'proc.5.title': 'Доставка и отчётность',
+    'proc.5.tag': '/ 99.1% в срок',
+    'proc.5.desc': 'Подтверждение доставки, закрытие документов, полный отчёт заказчику. Менеджер доступен на каждом этапе.',
+    'cta.h2': 'Готовы просчитать маршрут?',
+    'cta.anatoliy': 'Анатолий',
+    'cta.btn': 'Отправить запрос на расчёт',
+    'contact.label': 'Контакты',
+    'contact.h2': 'Свяжитесь с нами',
+    'contact.f.name': 'Имя',
+    'contact.f.name.ph': 'Иван Петренко',
+    'contact.f.company': 'Компания',
+    'contact.f.company.ph': 'ООО «Компания»',
+    'contact.f.phone': 'Телефон',
+    'contact.f.msg': 'Сообщение',
+    'contact.f.msg.ph': 'Маршрут, тип и объём груза, любой вопрос...',
+    'contact.success': 'Сообщение принято. Ответим в течение 2 часов в рабочее время.',
+    'contact.error': 'Ошибка отправки. Напишите нам на office@q-centre.com.ua',
+    'contact.submit': 'Отправить сообщение',
+    'contact.d.phones': 'Телефоны',
+    'contact.d.address': 'Адрес',
+    'contact.d.street': 'ул. Василия Тютюнника, 37/1, оф. 17',
+    'contact.d.city': 'Киев, 03150, Украина',
+    'contact.d.hours': 'Часы работы',
+    'contact.d.h1': 'Пн–Пт: 09:00 – 18:00',
+    'contact.d.h2': 'Сб–Вс: по предварительной договорённости',
+    'footer.nav': 'Навигация',
+    'footer.services': 'Услуги',
+    'footer.legal': 'Правовое',
+    'footer.privacy': 'Конфиденциальность',
+    'footer.terms': 'Условия использования',
+    'footer.sitemap': 'Карта сайта',
+    'footer.copy': '© 2008–2026 ООО «Квадро Центр» · Киев, Украина',
+    'modal.title': 'Расчёт перевозки',
+    'modal.cargo': 'Тип груза',
+    'modal.choose': 'Выберите',
+    'modal.c1': 'Зерно / агро', 'modal.c2': 'Металл / прокат', 'modal.c3': 'Уголь / кокс',
+    'modal.c4': 'Химическое сырьё', 'modal.c5': 'Нефтепродукты', 'modal.c6': 'Контейнеры',
+    'modal.c7': 'Негабарит', 'modal.c8': 'Другое',
+    'modal.vol': 'Объём, т', 'modal.vol.ph': 'напр. 5 000',
+    'modal.route': 'Маршрут', 'modal.route.ph': 'напр. Харьков → Варшава',
+    'modal.contact': 'Email или телефон', 'modal.contact.ph': '+380... или email',
+    'modal.success': 'Запрос принят. Ответим в течение 2 часов.',
+    'modal.error': 'Ошибка. Напишите нам на office@q-centre.com.ua',
+    'modal.submit': 'Отправить запрос',
+    '_title': 'Quadro Center — Железнодорожная логистика нового поколения',
+  },
+
+  en: {
+    'skip': 'Skip to main content',
+    'nav.services': 'Services',
+    'nav.routes': 'Routes',
+    'nav.contacts': 'Contacts',
+    'nav.calc': 'Get Quote',
+    'hero.eyebrow': 'Rail Logistics · Quadro Center',
+    'hero.w1': 'Railway.',
+    'hero.w2': 'Any',
+    'hero.w3': 'border.',
+    'hero.lead': 'Freight transport Ukraine ⇄ EU ⇄ CIS. Fixed rates regardless of delivery time. Own fleet. Full documentation management.',
+    'hero.btn1': 'Get a Quote',
+    'hero.btn2': 'Contact Us',
+    'metrics.years': 'Years on market',
+    'metrics.trips': 'Wagon-trips / year',
+    'metrics.countries': 'Countries served',
+    'metrics.cargo': 'Cargo per year',
+    'metrics.ontime': 'On-time delivery',
+    'svc.label': 'Services',
+    'svc.h2': 'Full-cycle Rail Logistics',
+    'svc.link': 'Learn more →',
+    'svc1.num': '01 — DELIVERY',
+    'svc1.title': 'Freight Transport',
+    'svc1.desc': 'Organizing shipments in all wagon types across Ukraine and international routes. Fixed rates regardless of transit duration.',
+    'svc1.list': '<li>Gondola cars, boxcars, tank cars, flatcars</li><li>Oversized cargo on well cars</li><li>Routes UA → EU, Baltic, Central Asia</li><li>Loading organization and dispatch</li>',
+    'svc2.num': '02 — TRANSIT',
+    'svc2.title': 'Transit Support',
+    'svc2.desc': 'Full management of transit shipments: from obtaining transit codes to closing documentation at every border crossing.',
+    'svc2.list': '<li>Obtaining transit codes</li><li>CIM/SMGS, TIR, CMR documents</li><li>Customs escort at every crossing</li><li>Route coordination with railways</li>',
+    'svc3.num': '03 — REPAIR',
+    'svc3.title': 'Wagon Repair',
+    'svc3.desc': 'Current detachment, depot and capital repairs. ABD PV registration, mileage maintenance, spare parts supply.',
+    'svc3.list': '<li>Current, depot and capital repairs</li><li>Mileage-based maintenance</li><li>ABD PV registration and management</li><li>Spare parts supply</li>',
+    'svc4.num': '04 — FLEET MGMT',
+    'svc4.title': 'Fleet Management',
+    'svc4.desc': "Full management of client's wagon fleet: trip planning, condition monitoring, optimization of empty runs.",
+    'svc4.list': '<li>Operational dispatch management</li><li>Fleet location monitoring</li><li>Route load optimization</li><li>Reporting and analytics for clients</li>',
+    'stats.label': 'Numbers',
+    'stats.h2': 'Client loyalty is our competitive advantage',
+    'stats.s1': 'Years on the rail freight market',
+    'stats.s2': 'Wagon-trips per year',
+    'stats.s3': 'Clients return the following year',
+    'stats.s4': 'Maximum response time per request',
+    'stats.s4.sfx': 'hr',
+    'routes.label': 'Routes',
+    'routes.h2': 'Transport Network',
+    'routes.leg1': 'Main routes',
+    'routes.leg2': 'Regional directions',
+    'routes.c1': 'Kyiv → Lviv',
+    'routes.c2': 'Kyiv → Kharkiv',
+    'routes.c3': 'Kyiv → Odessa',
+    'routes.c4': 'Kyiv → Dnipro',
+    'routes.c5': 'Dnipro → Zaporizhzhia',
+    'proc.label': 'Process',
+    'proc.h2': 'How We Work',
+    'proc.1.title': 'Request',
+    'proc.1.tag': '/ < 2 hrs',
+    'proc.1.desc': 'Send us the route, cargo type and volume. We respond with a preliminary estimate within two business hours.',
+    'proc.2.title': 'Quote',
+    'proc.2.tag': '/ fixed rate',
+    'proc.2.desc': 'We provide a commercial offer with a fixed rate. The price does not change regardless of delivery time — no surprises.',
+    'proc.3.title': 'Contract',
+    'proc.3.tag': '/ documentation',
+    'proc.3.desc': 'Signing the contract, agreeing on insurance terms, preparing transport and customs documents.',
+    'proc.4.title': 'Dispatch',
+    'proc.4.tag': '/ tracking',
+    'proc.4.desc': 'Loading organization, waybill processing, wagon dispatch with real-time location tracking.',
+    'proc.5.title': 'Delivery & Reporting',
+    'proc.5.tag': '/ 99.1% on time',
+    'proc.5.desc': 'Delivery confirmation, document closure, full report to the client. Manager available at every stage.',
+    'cta.h2': 'Ready to calculate a route?',
+    'cta.anatoliy': 'Anatoliy',
+    'cta.btn': 'Send a calculation request',
+    'contact.label': 'Contacts',
+    'contact.h2': 'Get in Touch',
+    'contact.f.name': 'Name',
+    'contact.f.name.ph': 'John Smith',
+    'contact.f.company': 'Company',
+    'contact.f.company.ph': 'LLC «Company»',
+    'contact.f.phone': 'Phone',
+    'contact.f.msg': 'Message',
+    'contact.f.msg.ph': 'Route, cargo type and volume, any question...',
+    'contact.success': 'Message received. We will reply within 2 business hours.',
+    'contact.error': 'Sending failed. Please email us at office@q-centre.com.ua',
+    'contact.submit': 'Send Message',
+    'contact.d.phones': 'Phones',
+    'contact.d.address': 'Address',
+    'contact.d.street': '37/1 Vasyla Tyutyunnyka St., off. 17',
+    'contact.d.city': 'Kyiv, 03150, Ukraine',
+    'contact.d.hours': 'Working Hours',
+    'contact.d.h1': 'Mon–Fri: 09:00 – 18:00',
+    'contact.d.h2': 'Sat–Sun: by appointment',
+    'footer.nav': 'Navigation',
+    'footer.services': 'Services',
+    'footer.legal': 'Legal',
+    'footer.privacy': 'Privacy Policy',
+    'footer.terms': 'Terms of Use',
+    'footer.sitemap': 'Sitemap',
+    'footer.copy': '© 2008–2026 Quadro Center LLC · Kyiv, Ukraine',
+    'modal.title': 'Freight Calculation',
+    'modal.cargo': 'Cargo type',
+    'modal.choose': 'Select',
+    'modal.c1': 'Grain / Agro', 'modal.c2': 'Metal / Steel', 'modal.c3': 'Coal / Coke',
+    'modal.c4': 'Chemical materials', 'modal.c5': 'Petroleum products', 'modal.c6': 'Containers',
+    'modal.c7': 'Oversized', 'modal.c8': 'Other',
+    'modal.vol': 'Volume, t', 'modal.vol.ph': 'e.g. 5 000',
+    'modal.route': 'Route', 'modal.route.ph': 'e.g. Kharkiv → Warsaw',
+    'modal.contact': 'Email or phone', 'modal.contact.ph': '+380... or email',
+    'modal.success': 'Request received. We will reply within 2 hours.',
+    'modal.error': 'Error. Please email us at office@q-centre.com.ua',
+    'modal.submit': 'Send Request',
+    '_title': 'Quadro Center — Next-gen Rail Logistics',
+  }
+};
+
+let currentLang = localStorage.getItem('qc-lang') || 'uk';
+
+function setLang(l) {
+  if (!I18N[l]) return;
+  currentLang = l;
+  document.documentElement.lang = l;
+  localStorage.setItem('qc-lang', l);
+
+  // Update lang buttons
+  document.querySelectorAll('.lang-sw button').forEach(b => {
+    b.classList.toggle('on', b.dataset.lang === l);
+  });
+
+  // Text content
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (I18N[l][key] !== undefined) el.textContent = I18N[l][key];
+  });
+
+  // HTML content (for lists with <li> tags)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (I18N[l][key] !== undefined) el.innerHTML = I18N[l][key];
+  });
+
+  // Placeholder attributes
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.dataset.i18nPh;
+    if (I18N[l][key] !== undefined) el.placeholder = I18N[l][key];
+  });
+
+  // Select options with data-i18n (textContent works for option elements)
+  // Already handled by data-i18n above
+
+  // Page title
+  if (I18N[l]['_title']) document.title = I18N[l]['_title'];
+}
+
+/* ══ Particle hero ══ */
+const canvas = document.getElementById('hero-canvas');
+let net;
+function initNet() {
+  if (net) net.stop();
+  net = new ParticleNetwork(canvas, { nodeCount: 60, connectionDist: 150 });
+}
+window.addEventListener('load', initNet);
+
+/* ══ Header scroll ══ */
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive: true });
+
+/* ══ Mobile nav ══ */
+const ham = document.getElementById('ham');
+const navOv = document.getElementById('nav-ov');
+function openNav() { navOv.classList.add('open'); ham.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeNav() { navOv.classList.remove('open'); ham.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+ham.addEventListener('click', openNav);
+document.getElementById('ov-close').addEventListener('click', closeNav);
+navOv.addEventListener('keydown', e => { if(e.key==='Escape') closeNav(); });
+
+/* ══ Theme toggle ══ */
+const themeBtn = document.getElementById('theme-btn');
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('qc-theme', t);
+  if (net) { net.stop(); initNet(); }
+}
+themeBtn.addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  applyTheme(cur === 'dark' ? 'light' : 'dark');
+});
+const saved = localStorage.getItem('qc-theme');
+if (saved) applyTheme(saved);
+
+/* ══ Scroll reveal ══ */
+document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+const revEls = document.querySelectorAll('.reveal:not(.hero .reveal)');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
+  });
+}, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+requestAnimationFrame(() => requestAnimationFrame(() => { revEls.forEach(el => ro.observe(el)); }));
+
+/* ══ Hero counter roll-up ══ */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const isFloat = !Number.isInteger(target);
+      const dur = 2000; const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = target * eased;
+        el.textContent = (isFloat ? val.toFixed(1) : Math.round(val).toLocaleString('uk-UA')) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }, 600);
+});
+
+/* ══ Stats counter (on scroll) ══ */
+const statEls = document.querySelectorAll('[data-stat]');
+const statObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseInt(el.dataset.stat);
+      const dur = 1600; const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString('uk-UA');
+        if (p < 1) requestAnimationFrame(tick); else el.textContent = target.toLocaleString('uk-UA');
+      }
+      requestAnimationFrame(tick);
+      statObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+statEls.forEach(el => statObs.observe(el));
+
+/* ══ Route map path animation ══ */
+const routeObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const paths = document.querySelectorAll('.route-line');
+      paths.forEach((p, i) => {
+        const len = p.getTotalLength ? p.getTotalLength() : 500;
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+        setTimeout(() => {
+          p.style.transition = `stroke-dashoffset ${1200 + i * 150}ms cubic-bezier(0.16,1,0.3,1)`;
+          p.style.strokeDashoffset = '0';
+        }, 100 + i * 160);
+      });
+      routeObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const routeWrap = document.querySelector('.route-wrap');
+if (routeWrap) routeObs.observe(routeWrap);
+
+/* Pulse ring animation on Kyiv hub — CSS-based, no RAF loop */
+/* Handled by CSS animation in styles.css pulse-ring class */
+
+/* ══ Modal ══ */
+const modal = document.getElementById('modal');
+function openModal() {
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  const first = modal.querySelector('input,select');
+  if (first) first.focus();
+}
+function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModal(); closeNav(); } });
+
+/* ══ Form submission via formsubmit.co (no registration needed) ══
+   First submission will send an activation email to office@q-centre.com.ua
+   Click the activation link — then all subsequent submissions deliver normally. */
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/office@q-centre.com.ua';
+
+async function submitForm(formEl, successEl, errorEl, submitBtn) {
+  const origText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = '...';
+  successEl.style.display = 'none';
+  errorEl.style.display = 'none';
+
+  const data = {};
+  new FormData(formEl).forEach((v, k) => { if (k !== '_honey') data[k] = v; });
+  data['_lang'] = currentLang;
+  data['_subject'] = 'Новий запит з сайту Quadro Center';
+  data['_template'] = 'table';
+  data['_captcha'] = 'false';
+
+  try {
+    const resp = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (resp.ok) {
+      successEl.style.display = 'block';
+      formEl.reset();
+    } else {
+      throw new Error('server error');
+    }
+  } catch {
+    errorEl.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = origText;
+  }
+}
+
+function handleModal(e) {
+  e.preventDefault();
+  const form = e.target;
+  submitForm(
+    form,
+    document.getElementById('modal-success'),
+    document.getElementById('modal-error'),
+    document.getElementById('modal-submit')
+  ).then(() => {
+    if (document.getElementById('modal-success').style.display === 'block') {
+      setTimeout(closeModal, 2800);
+    }
+  });
+}
+
+function handleContact(e) {
+  e.preventDefault();
+  submitForm(
+    e.target,
+    document.getElementById('contact-success'),
+    document.getElementById('contact-error'),
+    document.getElementById('contact-submit')
+  );
+}
+
+/* ══ Magnetic CTA (desktop only) ══ */
+if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width/2) * 0.22;
+      const y = (e.clientY - r.top - r.height/2) * 0.22;
+      btn.style.transform = `translate(${x}px,${y}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+}
+
+/* ══ Init language on page load ══ */
+setLang(currentLang);
+</script>
+</body>
+</html>
