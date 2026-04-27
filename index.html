@@ -1093,12 +1093,12 @@ if (routeWrap) routeObs.observe(routeWrap);
 
 /* ══ Modal ══ */
 const modal = document.getElementById('modal');
-function openModal() {
+window.openModal = function openModal() {
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   const first = modal.querySelector('input,select');
   if (first) first.focus();
-}
+};
 function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
 modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModal(); closeNav(); } });
