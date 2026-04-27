@@ -318,13 +318,15 @@ body::before {
   position: relative; z-index: 2;
   margin-top: 48px;
   border-top: 1px solid var(--border);
-  display: grid; grid-template-columns: repeat(5, 1fr);
   background: rgba(15,18,24,0.6);
   backdrop-filter: blur(8px);
 }
 [data-theme="light"] .metrics-bar { background: rgba(243,241,236,0.7); }
+.metrics-inner {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+}
 .metric {
-  padding: 24px 28px;
+  padding: 24px 0;
   border-right: 1px solid var(--border);
 }
 .metric:last-child { border-right: none; }
@@ -338,7 +340,7 @@ body::before {
   text-transform: uppercase; letter-spacing: 0.07em; margin-top: 6px;
 }
 @media (max-width: 767px) {
-  .metrics-bar { grid-template-columns: repeat(2, 1fr); }
+  .metrics-inner { grid-template-columns: repeat(2, 1fr); }
   .metric:nth-child(2) { border-right: none; }
   .metric:nth-child(n+3) { border-top: 1px solid var(--border); }
   .metric:nth-child(5) { grid-column: 1 / -1; border-right: none; }
