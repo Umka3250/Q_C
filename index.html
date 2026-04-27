@@ -1094,18 +1094,25 @@ if (routeWrap) routeObs.observe(routeWrap);
 /* Handled by CSS animation in styles.css pulse-ring class */
 
 /* ══ Modal ══ */
-const modal = document.getElementById('modal');
-window.openModal = function openModal() {
-  modal.classList.add('open');
+function openModal() {
+  var m = document.getElementById('modal');
+  if (!m) return;
+  m.classList.add('open');
   document.body.style.overflow = 'hidden';
-  const first = modal.querySelector('input,select');
-  if (first) first.focus();
-};
-function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
-document.addEventListener('click', e => {
-  if (e.target.closest('.js-open-modal')) { e.preventDefault(); window.openModal(); }
+  var f = m.querySelector('input,select');
+  if (f) f.focus();
+}
+function closeModal() {
+  var m = document.getElementById('modal');
+  if (!m) return;
+  m.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.addEventListener('click', function(e) {
+  var t = e.target.closest('.js-open-modal');
+  if (t) { e.preventDefault(); openModal(); }
 });
-modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModal(); closeNav(); } });
 
 /* ══ Form submission via formsubmit.co (no registration needed) ══
