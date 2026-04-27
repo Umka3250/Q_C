@@ -701,7 +701,7 @@ body::before {
   padding-top: 28px; border-top: 1px solid var(--border);
 }
 .footer-logo { display: block; flex-shrink: 0; }
-.footer-logo .logo-img { height: 34px; width: auto; display: block; }
+.footer-logo .logo-img { height: 34px; width: auto; }
 .footer-copy { font-family: var(--font-m); font-size: 11px; color: var(--text-mute); }
 
 @media (max-width: 1023px) { .footer-top { grid-template-columns: 1fr 1fr; } }
