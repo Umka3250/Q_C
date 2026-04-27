@@ -432,6 +432,7 @@ body::before {
   background: none; border: none; padding: 0; cursor: pointer;
 }
 .svc-link:hover { gap: 16px; }
+.svc-card .btn { align-self: flex-start; margin-top: auto; }
 
 @media (max-width: 767px) { .services-grid { grid-template-columns: 1fr; } }
 
