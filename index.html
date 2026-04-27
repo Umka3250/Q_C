@@ -1100,8 +1100,8 @@ window.openModal = function openModal() {
   if (first) first.focus();
 };
 function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
-document.querySelectorAll('.js-open-modal').forEach(el => {
-  el.addEventListener('click', e => { e.preventDefault(); window.openModal(); });
+document.addEventListener('click', e => {
+  if (e.target.closest('.js-open-modal')) { e.preventDefault(); window.openModal(); }
 });
 modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModal(); closeNav(); } });
