@@ -700,12 +700,8 @@ body::before {
   flex-wrap: wrap; gap: 16px;
   padding-top: 28px; border-top: 1px solid var(--border);
 }
-.footer-wm {
-  font-family: var(--font-d); font-weight: 800;
-  font-size: clamp(1.2rem, 3vw, 2.5rem);
-  color: var(--border-2); letter-spacing: -0.03em;
-}
-.footer-wm span { color: var(--accent); }
+.footer-logo { display: block; flex-shrink: 0; }
+.footer-logo .logo-img { height: 34px; width: auto; display: block; }
 .footer-copy { font-family: var(--font-m); font-size: 11px; color: var(--text-mute); }
 
 @media (max-width: 1023px) { .footer-top { grid-template-columns: 1fr 1fr; } }
