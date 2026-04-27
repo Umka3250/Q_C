@@ -139,7 +139,7 @@
           <li>Маршрути UA → ЄС, Балтика, Середня Азія</li>
           <li>Організація навантаження та відправлення</li>
         </ul>
-        <a href="#" class="svc-link mono" data-i18n="svc.link" onclick="openModal();return false;">Дізнатись більше →</a>
+        <a href="#" class="svc-link mono js-open-modal" data-i18n="svc.link">Дізнатись більше →</a>
       </article>
 
       <article class="svc-card reveal d1">
@@ -158,7 +158,7 @@
           <li>Митний супровід на кожному переході</li>
           <li>Узгодження маршруту з залізницями</li>
         </ul>
-        <a href="#" class="svc-link mono" data-i18n="svc.link" onclick="openModal();return false;">Дізнатись більше →</a>
+        <a href="#" class="svc-link mono js-open-modal" data-i18n="svc.link">Дізнатись більше →</a>
       </article>
 
       <article class="svc-card reveal d2">
@@ -178,7 +178,7 @@
           <li>Реєстрація та ведення в АБД ПВ</li>
           <li>Постачання запасних частин</li>
         </ul>
-        <a href="#" class="svc-link mono" data-i18n="svc.link" onclick="openModal();return false;">Дізнатись більше →</a>
+        <a href="#" class="svc-link mono js-open-modal" data-i18n="svc.link">Дізнатись більше →</a>
       </article>
 
       <article class="svc-card reveal d3">
@@ -197,7 +197,7 @@
           <li>Оптимізація завантаженості маршрутів</li>
           <li>Звітність і аналітика для замовника</li>
         </ul>
-        <a href="#" class="svc-link mono" data-i18n="svc.link" onclick="openModal();return false;">Дізнатись більше →</a>
+        <a href="#" class="svc-link mono js-open-modal" data-i18n="svc.link">Дізнатись більше →</a>
       </article>
 
     </div>
@@ -1100,6 +1100,9 @@ window.openModal = function openModal() {
   if (first) first.focus();
 };
 function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+document.querySelectorAll('.js-open-modal').forEach(el => {
+  el.addEventListener('click', e => { e.preventDefault(); window.openModal(); });
+});
 modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModal(); closeNav(); } });
 
